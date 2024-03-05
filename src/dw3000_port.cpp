@@ -91,6 +91,10 @@ void spiBegin(uint8_t irq, uint8_t rst, uint8_t wake)
   // Configure the IRQ pin as INPUT. Required for correct interrupt setting for ESP8266
   pinMode(irq, INPUT);
   // start SPI
+  SPI1.setSCK(10);
+  SPI1.setCS(9);
+  SPI1.setRX(11);
+  SPI1.setTX(12);
   SPI1.begin();
 #ifndef ESP8266
 //  SPI1.usingInterrupt(digitalPinToInterrupt(irq)); // not every board support this, e.g. ESP8266
